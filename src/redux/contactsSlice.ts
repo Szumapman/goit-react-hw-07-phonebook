@@ -47,11 +47,7 @@ const contactsSlice = createSlice({
                 state.error = null;
             })
             .addMatcher(isPendingAction, handlePending)
-            .addMatcher(isRejectAction, handleRejected)
-            .addDefaultCase((state, action) => {
-                state.isLoading = false;
-                state.error = "Unknown action: " + action.type;
-            });
+            .addMatcher(isRejectAction, handleRejected);
     },
 });
 
