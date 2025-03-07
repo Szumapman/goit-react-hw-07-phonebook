@@ -1,7 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Contact } from "../types/Contact";
 import { fetchContacts, addContact, deleteContact } from "./operations";
-import { act } from "react";
 
 
 const isPendingAction = (action: any) => {
