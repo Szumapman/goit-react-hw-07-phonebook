@@ -5,10 +5,10 @@ import { setFilter } from '../../redux/filterSlice';
 
 
 export const Filter = () => {
-    const dispach = useDispatch();
+    const dispatch = useDispatch();
     const filter = useSelector(selectFilter);
     const onFilterChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        dispach(setFilter(event.target.value));
+        dispatch(setFilter(event.target.value));
     }
 
     return (
