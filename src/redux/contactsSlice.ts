@@ -50,7 +50,8 @@ const contactsSlice = createSlice({
             .addMatcher(isPendingAction, handlePending)
             .addMatcher(isRejectAction, handleRejected)
             .addDefaultCase((state, action) => {
-                if (action.type === "contacts/*") {
+                console.log(action.type);
+                if (action.type.startsWith("contacts/")) {
                     state.isLoading = false;
                     state.error = "Unknown action: " + action.type;
                 }
