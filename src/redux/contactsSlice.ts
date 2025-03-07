@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { Contact } from "../types/Contact";
 import { fetchContacts, addContact, deleteContact } from "./operations";
+import { act } from "react";
 
 
 const isPendingAction = (action: any) => {
@@ -47,11 +48,15 @@ const contactsSlice = createSlice({
                 state.error = null;
             })
             .addMatcher(isPendingAction, handlePending)
-            .addMatcher(isRejectAction, handleRejected);
+            .addMatcher(isRejectAction, handleRejected)
+            .addDefaultCase((state, action) => {
+                if (action.type === "contacts/*") {
+                    state.isLoading = false;
+                    state.error = "Unknown action: " + action.type;
+                }
+            });
     },
 });
-
-
 
 
 export default contactsSlice.reducer;
